@@ -1,4 +1,13 @@
+using DataAccess.Extensions;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDatabaseContext(b => b.UseLazyLoadingProxies()
+    .UseInMemoryDatabase("lasmart"));
+
+builder.Services.AddDataAccess();
+
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
