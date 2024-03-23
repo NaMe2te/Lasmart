@@ -1,3 +1,5 @@
+using API.Extensions;
+using API.Middlewares;
 using Application.Extensions;
 using DataAccess.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,8 @@ builder.Services.AddDatabaseContext(b => b.UseLazyLoadingProxies()
 builder.Services
     .AddApplication()
     .AddDataAccess();
+
+builder.Services.AddCustomMiddlewares();
 
 builder.Services.AddCors(options =>
 {
@@ -41,10 +45,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
 app.MapControllers();
+
+app.UseGlobalExceptionHandlingMiddleware();
 
 app.Run();
