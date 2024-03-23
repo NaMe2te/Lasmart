@@ -18,9 +18,9 @@ public class CommentController : BaseController<Comment, CommentDto>
         _commentService = service;
     }
 
-    [HttpGet(nameof(GetByPoint) + "/{id}")]
+    [HttpGet(nameof(GetByPoint) + "/{pointId}")]
     [ProducesResponseType((int) HttpStatusCode.OK)]
-    public async Task<ActionResult<CommentDto>> GetByPoint(Guid pointId)
+    public async Task<ActionResult<IEnumerable<CommentDto>>> GetByPoint(Guid pointId)
     {
         var dtos = await _commentService.GetByPoint(pointId);
         return Ok(dtos);
