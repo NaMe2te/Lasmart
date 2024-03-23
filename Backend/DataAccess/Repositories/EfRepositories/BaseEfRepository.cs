@@ -31,7 +31,7 @@ public abstract class BaseEfRepository<TEntity> : IBaseRepository<TEntity> where
 
     public async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
     {
-        return await _databaseContext.Set<TEntity>().FirstOrDefaultAsync(predicate) ?? throw new ArgumentNullException(nameof(TEntity));
+        return await _databaseContext.Set<TEntity>().FirstOrDefaultAsync(predicate) ?? throw new ArgumentNullException(typeof(TEntity).Name);
     }
 
     public async Task<TEntity?> Find(Expression<Func<TEntity, bool>> predicate)
