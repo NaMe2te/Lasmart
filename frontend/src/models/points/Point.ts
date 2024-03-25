@@ -1,12 +1,14 @@
 import {Guid} from "guid-typescript";
+import {Comment} from "../comments/Comment";
 
 export class Point {
     private readonly _id: Guid;
+    private readonly _comments: Array<Comment>;
+
     private _x: number;
     private _y: number;
     private _radius: number;
     private _color: string;
-    private _comments: Array<Comment>;
 
 
     constructor(id: Guid, x: number, y: number, radius: number, color: string, comments: Array<Comment>) {

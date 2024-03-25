@@ -1,10 +1,10 @@
 import {Guid} from "guid-typescript";
 
 export class Comment {
-    public readonly _id: Guid;
-    public readonly _pointId: Guid;
-    public _text: string;
-    public _color: string;
+    private readonly _id: Guid;
+    private readonly _pointId: Guid;
+    private _text: string;
+    private _color: string;
 
     constructor(id: Guid, text: string, color: string, pointId: Guid) {
         this._id = id;
