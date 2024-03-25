@@ -15,21 +15,26 @@ class App {
 
     private _layer: Konva.Layer;
 
-    constructor(private containerId: string, eventManager: EventManager) {
+    constructor(container: string, eventManager: EventManager) {
         this._eventManager = eventManager;
         this._mainStage = new Konva.Stage({
-            container: this.containerId,
+            container: container,
             width: window.innerWidth,
             height: window.innerHeight
         });
 
         this._layer = new Konva.Layer();
         this._mainStage.add(this._layer);
-        this._groupManager = new GroupManager(this._layer, eventManager)
+        this._groupManager = new GroupManager(this._layer, eventManager);
+        this.addPointFuncToEvent();
     }
 
-    public addPoint(x: number, y: number) {
-        this._groupManager.createGroup(x, y);
+    public addPoint(x: number, y: number, radius: number, color: string) {
+        this._groupManager.createGroup(x, y, radius, color);
+    }
+
+    private addPointFuncToEvent() {
+        this._eventManager.createPointEvent(this.addPoint.bind(this));
     }
 }
 
@@ -38,6 +43,3 @@ const eventManager = new EventManager();
 eventManager.initializeInitialEvents();
 
 const app = new App("app", eventManager);
-app.addPoint(100, 200);
-app.addPoint(150, 250);
-app.addPoint(200, 300);

@@ -23,10 +23,11 @@ export class GroupManager {
         this._commentPrinter = new CommentPrinter(this._layer);
     }
 
-    public createGroup(x: number, y: number) {
+    public createGroup(x: number, y: number, radius: number, color: string) {
         const group = new Konva.Group({draggable: true});
 
-        const point = new Point(Guid.create(), x, y, 10, "red", [new Comment(Guid.create(), "rerewrewrewrewrewrewrwerewrewrewrwerwed", "red", Guid.create()),
+        // const point = new CreatePoint(x, y, radius, color);
+        const point = new Point(Guid.create(), x, y, radius, color, [new Comment(Guid.create(), "rerewrewrewrewrewrewrwerewrewrewrwerwed", "red", Guid.create()),
             new Comment(Guid.create(), "red", "red", Guid.create()), new Comment(Guid.create(), "red", "red", Guid.create())]);
         // TODO: Передать на вызов api
 

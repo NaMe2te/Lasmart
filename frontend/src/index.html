@@ -5,17 +5,38 @@
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="dist/bundle.js"></script>
-    <!--<script defer src="dist/app.js"></script>-->
 </head>
 <body>
     <div id="app"></div>
 
     <div id="window-contextMenu" class="cm">
-        <div class="cm__item">Добавить точку</div>
+        <div id="open-point-form-button" class="cm__item">Добавить точку</div>
     </div>
 
     <div id="point-contextMenu" class="cm">
         <div class="cm__item">Добавить комментарий</div>
+    </div>
+
+    <div id="form__add-point" class="form__point">
+        <div class="form__point-content">
+            <span class="form__close-button">&times;</span>
+            <h2>Введите данные точки</h2>
+            <form>
+                <label for="point-color">Цвет точки:</label>
+                <input type="color" id="point-color" name="point-color" value="#ff0000">
+
+                <label for="point-x">x:</label>
+                <input type="number" id="point-x">
+
+                <label for="point-y">y:</label>
+                <input type="number" id="point-y">
+
+                <label for="point-radius">Радиус точки:</label>
+                <input type="number" id="point-radius" name="point-radius" min="1" max="200" value="10">
+
+                <input id="form__add-button" type="submit" value="Сохранить">
+            </form>
+        </div>
     </div>
 
 </body>

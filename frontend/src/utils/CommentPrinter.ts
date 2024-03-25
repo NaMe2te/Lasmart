@@ -46,8 +46,6 @@ export class CommentPrinter {
             strokeWidth: 1
         });
 
-
-
         this._layer.add(rect);
         this._layer.add(text);
 
