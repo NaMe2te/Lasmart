@@ -38,7 +38,7 @@ export class Point {
         return this._comments;
     }
 
-    addComment(comment: Comment): void {
+    public addComment(comment: Comment): void {
         this._comments.push(comment);
     }
 }

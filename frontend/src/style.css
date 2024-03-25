@@ -2,3 +2,31 @@
     padding: 0;
     margin: 0;
 }
+
+.cm {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    padding: 10px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    text-align: center;
+    opacity: .95;
+}
+
+.cm__item {
+    cursor: pointer;
+    padding: 3px 8px;
+}
+
+.cm__item:hover {
+    background-color: #f8f8f8;
+}
+
+.cm__divider {
+    border-bottom: 1px solid #eeeeee;
+    margin: 10px 0;
+}
