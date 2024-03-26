@@ -7,7 +7,7 @@ export class Point {
     public radius: number;
     public color: string;
 
-    private readonly _comments: Array<Comment>;
+    public comments: Array<Comment>;
 
     constructor(id: string, x: number, y: number, radius: number, color: string, comments: Array<Comment>) {
         this.id = id;
@@ -15,15 +15,7 @@ export class Point {
         this.y = y;
         this.radius = radius;
         this.color = color;
-        this._comments = comments;
-    }
-
-    get comments(): ReadonlyArray<Comment> {
-        return this._comments;
-    }
-
-    public addComment(comment: Comment): void {
-        this._comments.push(comment);
+        this.comments = comments;
     }
 
     public static fromJson(json: any) {

@@ -28,6 +28,31 @@ export class PointClient extends BaseClient {
         }
     }
 
+    async update(updatedPoint: Point): Promise<Point> {
+        try {
+            const response = await fetch(`${this.baseUrl}Point/Update`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(updatedPoint)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Ошибка при отправке PUT-запроса на Point/Update ${response.status}`);
+            }
+
+            const jsonData = await response.json();
+            return Point.fromJson(jsonData);
+
+        } catch (error) {
+            console.error('Ошибка:', error);
+            throw error;
+        }
+    }
+
+
     async remove(id: string): Promise<void> {
         try {
             const response = await fetch(`${this.baseUrl}Point/Remove/${id}`, {

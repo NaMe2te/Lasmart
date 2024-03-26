@@ -28,10 +28,6 @@ export class FormEventsHandler {
         $('#open-comment-form-button').on("click", () => {
             this._commentForm.show();
         });
-
-        $('#edit-point-button').on("click", () => {
-            this._formEditPoint.show();
-        });
     }
 
     private onClick__CloseAdditionForms() {

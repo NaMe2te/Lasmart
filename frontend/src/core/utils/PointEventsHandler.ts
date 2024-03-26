@@ -26,6 +26,18 @@ export class PointEventsHandler {
         });
     }
 
+    public onUpdate(updatePointFunc: Function) {
+        $('#edit-form__add-point-button').on("click", (e) => {
+            e.preventDefault();
+            const radius = parseInt($("#edit-point-radius").val() as string);
+            const color = $("#edit-point-color").val();
+
+            updatePointFunc(radius, color);
+
+            $('#form__edit-point').hide();
+        });
+    }
+
     public onRemove(group: Konva.Group, removeGroupFunc: Function) {
         group.on("dblclick", (e) => {
             e.evt.preventDefault();
@@ -38,6 +50,16 @@ export class PointEventsHandler {
             e.evt.preventDefault();
             this._pointContextMenu.css(WindowEventsHandler.getContextMenuProp(e.evt, this._pointContextMenu));
             this._pointContextMenu.show();
+        });
+    }
+
+    public onClick__OpenUpdateForms(defaultRadius: number, defaultColor: string) {
+        $('#edit-point-button').on("click", (e) => {
+            e.preventDefault();
+            $("#edit-point-radius").val(defaultRadius);
+            $("#edit-point-color").val(defaultColor);
+
+            $('#form__edit-point').show();
         });
     }
 }
