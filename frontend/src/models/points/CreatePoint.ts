@@ -1,6 +1,4 @@
-import {Guid} from "guid-typescript";
 import {Comment} from "../comments/Comment";
-import {Point} from "./Point";
 
 export class CreatePoint {
     public x: number;

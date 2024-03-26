@@ -1,16 +1,17 @@
 import Konva from "konva";
-import {EventManager} from "./utils/EventManager";
-import {GroupManager} from "./utils/GroupManager";
+import {GroupService} from "./core/services/GroupService";
+import {WindowEventsHandler} from "./core/utils/WindowEventsHandler";
+import {FormEventsHandler} from "./core/utils/FormEventsHandler";
 
 class App {
-    private readonly _groupManager: GroupManager;
-    private readonly _eventManager: EventManager;
+    private readonly _groupManager: GroupService;
     private readonly _mainStage: Konva.Stage;
+    private readonly _windowEventsHandler: WindowEventsHandler;
 
     private _layer: Konva.Layer;
+    private _formEventsHandler: FormEventsHandler;
 
-    constructor(container: string, eventManager: EventManager) {
-        this._eventManager = eventManager;
+    constructor(container: string) {
         this._mainStage = new Konva.Stage({
             container: container,
             width: document.body.clientWidth,
@@ -19,21 +20,15 @@ class App {
 
         this._layer = new Konva.Layer();
         this._mainStage.add(this._layer);
-        this._groupManager = new GroupManager(this._layer, eventManager);
-        this.addPointFuncToEvent();
+        this._groupManager = new GroupService(this._layer);
+        this._windowEventsHandler = new WindowEventsHandler();
+        this._formEventsHandler = new FormEventsHandler();
     }
 
-    public async addPoint(x: number, y: number, radius: number, color: string) {
-        await this._groupManager.createGroup(x, y, radius, color);
-    }
-
-    private addPointFuncToEvent() {
-        this._eventManager.createPointEvent(this.addPoint.bind(this));
+    public start(): void {
+        this._windowEventsHandler.initWindowEvents();
     }
 }
 
-
-const eventManager = new EventManager();
-eventManager.initializeInitialEvents();
-
-const app = new App("app", eventManager);
+const app = new App("app");
+app.start()

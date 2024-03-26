@@ -1,9 +1,8 @@
-import {BaseService} from "./BaseService";
-import {Comment} from "../models/comments/Comment";
-import {CreateComment} from "../models/comments/CreateComment";
+import {BaseClient} from "./BaseClient";
+import {Comment} from "../../models/comments/Comment";
+import {CreateComment} from "../../models/comments/CreateComment";
 
-export class CommentService extends BaseService {
-
+export class CommentClient extends BaseClient {
     constructor() {
         super();
     }

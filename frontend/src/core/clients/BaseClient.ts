@@ -1,4 +1,4 @@
-export abstract class BaseService {
+export abstract class BaseClient {
     protected baseUrl: string;
     protected headers: Headers;
 

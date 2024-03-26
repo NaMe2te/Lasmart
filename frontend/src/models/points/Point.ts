@@ -1,4 +1,3 @@
-import {Guid} from "guid-typescript";
 import {Comment} from "../comments/Comment";
 
 export class Point {

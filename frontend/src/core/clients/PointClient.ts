@@ -1,14 +1,15 @@
-import {BaseService} from "./BaseService";
-import {Point} from "../models/points/Point";
-import {CreatePoint} from "../models/points/CreatePoint";
+import {BaseClient} from "./BaseClient";
+import {Point} from "../../models/points/Point";
+import {CreatePoint} from "../../models/points/CreatePoint";
 
-export class PointService extends BaseService {
+export class PointClient extends BaseClient {
     constructor() {
         super();
     }
 
     async create(createPoint: CreatePoint): Promise<Point> {
         try {
+            console.log(1);
             const response = await fetch(`${this.baseUrl}Point/Create`, {
                 method: 'POST',
                 headers: this.headers,
@@ -36,7 +37,7 @@ export class PointService extends BaseService {
             });
 
             if (!response.ok) {
-                throw new Error(`Ошибка при отправке DELETE-запроса на Point/Remove/${id}`);
+                throw new Error(`Ошибка при отправке DELETE-запроса на Point/Remove/${id} ${response.status}`);
             }
         } catch (error) {
             console.error('Ошибка:', error);

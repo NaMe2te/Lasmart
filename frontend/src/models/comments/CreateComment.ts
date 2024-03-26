@@ -1,5 +1,3 @@
-import {Guid} from "guid-typescript";
-
 export class CreateComment {
     public readonly pointId: string;
     public text: string;

@@ -1,5 +1,3 @@
-import {Guid} from "guid-typescript";
-
 export class Comment {
     public readonly id: string;
     public readonly pointId: string;
