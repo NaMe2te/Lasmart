@@ -16,7 +16,11 @@
     <div id="point-contextMenu" class="cm">
         <div id="open-comment-form-button" class="cm__item">Добавить комментарий</div>
         <div class="cm__divider"></div>
-        <div class="cm__item">Редактировать размер или цвет</div> <!-- TODO -->
+        <div id="edit-point-button" class="cm__item">Редактировать размер и цвет</div> <!-- TODO -->
+    </div>
+
+    <div id="comment-contextMenu" class="cm">
+        <div id="open-edit-comment-form-button" class="cm__item">Редактировать текст и цвет</div>
     </div>
 
     <div id="form__add-point" class="form__point">
@@ -41,18 +45,50 @@
         </div>
     </div>
 
+    <div id="form__edit-point" class="form__point">
+        <div class="form__point-content">
+            <span id="edit-form__close-point-button" class="form__close-button">&times;</span>
+            <h2>Введите новые данные точки</h2>
+            <form>
+                <label for="edit-point-color">Цвет точки:</label>
+                <input type="color" id="edit-point-color" name="point-color" value="#ff0000">
+
+                <label for="edit-point-radius">Радиус точки:</label>
+                <input type="number" id="edit-point-radius" name="point-radius" min="1" max="200" value="10">
+
+                <input id="edit-form__add-point-button" type="submit" value="Сохранить">
+            </form>
+        </div>
+    </div>
+
     <div id="form__add-comment" class="form__point">
         <div class="form__point-content">
             <span id="form__close-comment-button" class="form__close-button">&times;</span>
-            <h2>Введите данные точки</h2>
+            <h2>Введите данные коммента</h2>
             <form>
-                <label for="comment-color">Цвет коммента:</label>
+                <label for="comment-color">Цвет:</label>
                 <input type="color" id="comment-color" name="comment-color" value="#ff0000">
 
                 <label for="comment-text">Текст:</label>
                 <input type="text" id="comment-text" name="comment-color" required>
 
                 <input id="form__add-comment-button" type="submit" value="Сохранить">
+            </form>
+        </div>
+    </div>
+
+    <div id="form__edit-comment" class="form__point">
+        <div class="form__point-content">
+            <span id="edit-form__close-comment-button" class="form__close-button">&times;</span>
+            <h2>Введите новые данные коммента</h2>
+            <form>
+                <label for="edit-comment-color">Цвет:</label>
+                <input type="color" id="edit-comment-color" name="comment-color" value="#ff0000">
+
+                <label for="edit-comment-text">Текст:</label>
+                <input type="text" id="edit-comment-text" name="comment-color" required>
+
+                <input id="edit-form__add-comment-button" type="submit" value="Сохранить">
             </form>
         </div>
     </div>

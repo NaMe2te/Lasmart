@@ -33,7 +33,7 @@ export class Point {
         const radius = json.radius;
         const color = json.color;
 
-        const comments = json.comments ? json.comments.map((commentJson: any) => Comment.fromDto(commentJson)) : [];
+        const comments = json.comments ? json.comments.map((commentJson: any) => Comment.fromJson(commentJson)) : [];
 
         return new Point(id, x, y, radius, color, comments);
     }

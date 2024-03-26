@@ -1,7 +1,6 @@
 import Konva from "konva";
 import {Point} from "../../models/points/Point";
 import {IPrinter} from "../../infrastructure/interfaces/IPrinter";
-import {EventManager} from "../utils/EventManager";
 
 export class PointPrinter implements IPrinter<Point> {
     private readonly _layer: Konva.Layer;

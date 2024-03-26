@@ -3,15 +3,13 @@ import $ from "jquery";
 export class WindowEventsHandler {
     private readonly _pointContextMenu: JQuery<HTMLElement>;
     private readonly _windowContextMenu: JQuery<HTMLElement>;
+    private readonly _commentContextMenu: JQuery<HTMLElement>;
 
     constructor() {
         this._pointContextMenu = $('#point-contextMenu');
         this._windowContextMenu = $('#window-contextMenu');
+        this._commentContextMenu = $('#comment-contextMenu');
 
-        this.initWindowEvents();
-    }
-
-    public initWindowEvents(){
         this.onClick__HideAllContextMenus();
         this.contextMenu__OpenMainContextMenuToAddPoint();
     }
@@ -20,6 +18,7 @@ export class WindowEventsHandler {
         $(window).on("click", (e) => {
             this._pointContextMenu.hide();
             this._windowContextMenu.hide();
+            this._commentContextMenu.hide();
         });
     }
 

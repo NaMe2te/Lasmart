@@ -9,7 +9,6 @@ export class CommentClient extends BaseClient {
 
     async create(createComment: CreateComment): Promise<Comment> {
         try {
-            console.log(JSON.stringify(createComment));
             const response = await fetch(`${this.baseUrl}Comment/Create`, {
                 method: 'POST',
                 headers: this.headers,
@@ -21,7 +20,7 @@ export class CommentClient extends BaseClient {
             }
 
             const jsonData = await response.json();
-            return Comment.fromDto(jsonData);
+            return Comment.fromJson(jsonData);
 
         } catch (error) {
             console.error('Ошибка:', error);
@@ -29,7 +28,26 @@ export class CommentClient extends BaseClient {
         }
     }
 
-    /*async update(comment: Comment): Promise<Comment> {
-        return new Promise<Comment>();
-    }*/
+    async update(comment: Comment): Promise<Comment> {
+        try {
+            const response = await fetch(`${this.baseUrl}Comment/Update`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(comment)
+            });
+
+            if (!response.ok) {
+                throw new Error('Ошибка при отправке PUT-запроса на Comment/Update');
+            }
+
+            const json = await response.json();
+            return Comment.fromJson(json);
+        } catch (error) {
+            console.error('Ошибка:', error);
+            throw error;
+        }
+    }
 }

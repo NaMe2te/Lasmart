@@ -24,11 +24,6 @@ class App {
         this._windowEventsHandler = new WindowEventsHandler();
         this._formEventsHandler = new FormEventsHandler();
     }
-
-    public start(): void {
-        this._windowEventsHandler.initWindowEvents();
-    }
 }
 
 const app = new App("app");
-app.start()

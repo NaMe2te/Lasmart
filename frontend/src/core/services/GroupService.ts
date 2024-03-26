@@ -42,7 +42,6 @@ export class GroupService {
     public async createGroup(x: number, y: number, radius: number, color: string) {
         const group = new Konva.Group({draggable: true});
 
-        console.log(JSON.stringify(new CreatePoint(x, y, radius, color)));
         const point: Point = await this._pointClient.create(new CreatePoint(x, y, radius, color));
 
         const shape: Konva.Circle = this._pointPrinter.print(point);
@@ -68,7 +67,7 @@ export class GroupService {
 
         this._commentEventsHandler.onAdd(async (text: string, color: string) => {
             await this.addCommentToGroup(text, color, group, point);
-        })
+        });
     }
 
     public async removeGroup(group: Konva.Group, pointId: string) {

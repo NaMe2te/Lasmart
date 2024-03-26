@@ -9,7 +9,6 @@ export class PointClient extends BaseClient {
 
     async create(createPoint: CreatePoint): Promise<Point> {
         try {
-            console.log(1);
             const response = await fetch(`${this.baseUrl}Point/Create`, {
                 method: 'POST',
                 headers: this.headers,

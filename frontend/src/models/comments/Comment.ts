@@ -11,7 +11,7 @@ export class Comment {
         this.pointId = pointId;
     }
 
-    public static fromDto(json: any): Comment {
+    public static fromJson(json: any): Comment {
         const id = json.id;
         const text = json.text;
         const color = json.color;
