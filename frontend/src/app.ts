@@ -1,11 +1,5 @@
 import Konva from "konva";
-import {Point} from "./models/points/Point";
-import {PointPrinter} from "./utils/PointPrinter";
-import {Guid} from "guid-typescript";
-import {IPrinter} from "./infrastructure/interfaces/IPrinter";
-import $ from "jquery";
 import {EventManager} from "./utils/EventManager";
-import {Comment} from "./models/comments/Comment";
 import {GroupManager} from "./utils/GroupManager";
 
 class App {
@@ -19,7 +13,7 @@ class App {
         this._eventManager = eventManager;
         this._mainStage = new Konva.Stage({
             container: container,
-            width: window.innerWidth,
+            width: document.body.clientWidth,
             height: window.innerHeight
         });
 
@@ -29,8 +23,8 @@ class App {
         this.addPointFuncToEvent();
     }
 
-    public addPoint(x: number, y: number, radius: number, color: string) {
-        this._groupManager.createGroup(x, y, radius, color);
+    public async addPoint(x: number, y: number, radius: number, color: string) {
+        await this._groupManager.createGroup(x, y, radius, color);
     }
 
     private addPointFuncToEvent() {

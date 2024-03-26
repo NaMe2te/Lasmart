@@ -1,15 +1,18 @@
 import {Guid} from "guid-typescript";
+import {Comment} from "../comments/Comment";
+import {Point} from "./Point";
 
 export class CreatePoint {
-    public _x: number;
-    public _y: number;
-    public _radius: number;
-    public _color: string;
+    public x: number;
+    public y: number;
+    public radius: number;
+    public color: string;
+    public comments: Comment[] = [];
 
     constructor(x: number, y: number, radius: number, color: string) {
-        this._x = x;
-        this._y = y;
-        this._radius = radius;
-        this._color = color;
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
     }
 }

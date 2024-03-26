@@ -1,24 +1,24 @@
 import {Guid} from "guid-typescript";
 
 export class Comment {
-    private readonly _id: Guid;
-    private readonly _pointId: Guid;
-    private _text: string;
-    private _color: string;
+    public readonly id: string;
+    public readonly pointId: string;
+    public text: string;
+    public color: string;
 
-    constructor(id: Guid, text: string, color: string, pointId: Guid) {
-        this._id = id;
-        this._text = text;
-        this._color = color;
-        this._pointId = pointId;
+    constructor(id: string, text: string, color: string, pointId: string) {
+        this.id = id;
+        this.text = text;
+        this.color = color;
+        this.pointId = pointId;
     }
 
-    get id(): Guid { return this._id; }
-    get pointId(): Guid { return this._pointId; }
+    public static fromDto(json: any): Comment {
+        const id = json.id;
+        const text = json.text;
+        const color = json.color;
+        const pointId = json.pointId;
 
-    get text(): string { return this._text; }
-    set text(value: string) { this._text = value }
-
-    get color(): string { return this._color; }
-    set color(value: string) { this._color = value }
+        return new Comment(id, text, color, pointId);
+    }
 }

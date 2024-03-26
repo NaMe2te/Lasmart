@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "canvas": "^2.11.2",
-    "guid-typescript": "^1.0.9",
     "jquery": "^3.7.1",
     "konva": "^9.3.6"
   }

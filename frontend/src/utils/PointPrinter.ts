@@ -2,13 +2,16 @@ import Konva from "konva";
 import {Point} from "../models/points/Point";
 import {IPrinter} from "../infrastructure/interfaces/IPrinter";
 import {Guid} from "guid-typescript";
+import {EventManager} from "./EventManager";
 
 export class PointPrinter implements IPrinter<Point, Konva.Circle> {
     private readonly _layer: Konva.Layer;
-    private _shapes: Map<Guid, Konva.Circle> = new Map();
+    private readonly _eventManager: EventManager;
+    private _shapes: Map<string, Konva.Circle> = new Map();
 
-    constructor(layer: Konva.Layer) {
+    constructor(layer: Konva.Layer, eventManager: EventManager) {
         this._layer = layer;
+        this._eventManager = eventManager;
     }
 
     print(model: Point): Konva.Circle {
@@ -26,7 +29,7 @@ export class PointPrinter implements IPrinter<Point, Konva.Circle> {
         return circle;
     }
 
-    erase(modelId: Guid): void {
+    erase(modelId: string): void {
         const shape = this._shapes.get(modelId);
         if (shape) {
             shape.destroy();
